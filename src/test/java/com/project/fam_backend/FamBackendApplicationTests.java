@@ -8,6 +8,7 @@ class FamBackendApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.print(0);
 	}
 
 }
