@@ -45,7 +45,7 @@ public class UserController {
     public ResponseEntity updateUser(@RequestBody User user) {
         userService.updateUser(user);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(userService.getUserByName(user.getName()));
     }
 
     @GetMapping("/{name}")
@@ -69,6 +69,7 @@ public class UserController {
 
         // Find the user by name
         User user = userService.getUserByName(name);
+
         if (user == null) {
             return ResponseEntity.status(404).body("User not found.");
         }

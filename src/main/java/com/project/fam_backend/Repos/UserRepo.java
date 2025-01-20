@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface UserRepo extends MongoRepository<User,String>{
 
-    @Query("{'name':?0}")
-    Optional<User> findByUserName(String name);
+    @Query("{'userName':?0}")
+    Optional<User> findByUserName(String userName);
     
 }
 

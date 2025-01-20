@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.fam_backend.Objects.*;
 import com.project.fam_backend.Repos.UserRepo;
+import org.springframework.dao.DuplicateKeyException;
 
 @Service
 public class UserService {
@@ -20,8 +21,12 @@ public class UserService {
 
     
     public void addUser(User user)
-    {
-        userRepo.insert(user);
+    {   
+        try{
+        userRepo.insert(user);}
+        catch (DuplicateKeyException e) {
+            throw new IllegalArgumentException("The username '" +user.getuserName() + "' is already taken.");
+        }
     }
 
     public void updateUser(User user)

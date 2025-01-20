@@ -2,6 +2,7 @@ package com.project.fam_backend.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 @Document("User-data")
 public class User {
@@ -10,6 +11,7 @@ public class User {
     String id;
     @Field("name")
     String name;
+    @Indexed(unique = true) 
     @Field("userName")
     String userName;
     @Field("emailID")
